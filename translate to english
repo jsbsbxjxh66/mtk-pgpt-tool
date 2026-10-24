@@ -1,0 +1,26 @@
+# Usage:
+#   sh dump_pgpt.sh read      [Output File] [Block Device]
+#   sh dump_pgpt.sh write     <Input File> [Block Device]
+#   sh dump_pgpt.sh read-sgpt [Output File] [Block Device]
+#   sh dump_pgpt.sh write-sgpt <Input File> [Block Device]
+#   sh dump_pgpt.sh scatter   [MT Platform Name] [pgpt File]
+#
+# Parameter Description:
+#   Output File   Optional, read Default pgpt.bin, read-sgpt Default sgpt.bin
+#   Input File   Write mode is required, The partition table file to be written to the device
+#   Block Device     Optional, Automatic Detection (UFS: /dev/block/sdc, eMMC: /dev/block/mmcblk0)
+#   MT Platform Name   Optional, For example, MT6893, Automatically from /proc/device-tree Testing
+#   pgpt File   Optional, If specified, data is read directly from the block device.
+#
+# Example:
+#   sh dump_pgpt.sh read                          # Extract pgpt from the device to the script directory
+#   sh dump_pgpt.sh read /sdcard/pgpt.bin         # Extract to a specified path
+#   sh dump_pgpt.sh write pgpt_patched.bin        # Write the modified pgpt back to the device
+#   sh dump_pgpt.sh read-sgpt                     # Extract sgpt from the device to the script directory
+#   sh dump_pgpt.sh read-sgpt /sdcard/sgpt.bin    # Extract to a specified path
+#   sh dump_pgpt.sh write-sgpt sgpt_patched.bin   # Write the modified sgpt back to the device
+#   sh dump_pgpt.sh scatter                       # Generate a scatter directly from the device
+#   sh dump_pgpt.sh scatter MT6991                # Generate a scatter file using a specified platform name
+#   sh dump_pgpt.sh scatter MT6991 pgpt.bin       # Generate a scatter plot from an existing file
+#   sh dump_pgpt.sh pgpt.bin                      # Backward compatibility; equivalent to `read pgpt.bin`
+# ============================================================
